@@ -1,0 +1,5 @@
+Turn this into a Full-Stack MERN app. Follow the holiday app in the SEI1213/unit3/lessons guideline. 
+
+Use the https://pokeapi.co/ API ! Use Bulma or Bootstrap for styling!
+
+Portfolio Project
