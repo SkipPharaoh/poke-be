@@ -22,8 +22,9 @@ const options = {
 
 // MIDDLEWARE //
 app.use(express.urlencoded({extended: false}))
-app.use(cors(options))
 app.use('/', pokemonController)
+app.use(cors(options))
+app.use(express.json())
 
 // ROUTES //
 
