@@ -2,13 +2,13 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-require('./db')
-const pokemonController = require('./controllers/pokemon.js')
+require('./config')
+const usersRouter = require('./router/users')
 
 
 
 // APP CONFIG //
-const PORT = 9000
+const PORT = process.env.PORT || 9000
 const acceptList = ["http://localhost:3000"]
 const options = {
     origin: function(origin, callback){
@@ -22,9 +22,9 @@ const options = {
 
 // MIDDLEWARE //
 app.use(express.urlencoded({extended: false}))
-app.use('/', pokemonController)
 app.use(cors(options))
 app.use(express.json())
+app.use('/', usersRouter)
 
 // ROUTES //
 

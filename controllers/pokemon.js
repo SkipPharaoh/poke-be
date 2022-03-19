@@ -1,24 +1,16 @@
 // DEPENDENCIES //
-const express = require('express')
-const router = express.Router()
+const User = require('../models/user')
 
-// ROUTES //
+module.exports = {
+    signup
+};
 
-// Home
-router.get('/', (req,res) => {
-    // res.send('🌊PokéDex App is live')
-    res.status(200).json({
-        body: "You found the PokéMon!"
-    })
-})
-
-// Create
-router.post('/api/register', (req,res) => {
-    // res.send('🌊PokéDex App is live')
-    console.log(req.body)
-    res.json({
-        status: "Ok"
-    })
-})
-
-module.exports = router
+async function signup(req, res) {
+    const user = new User(req.body);
+    try {
+        await user.save();
+        res.json(user);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
