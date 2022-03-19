@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 require('./db')
+const pokemonController = require('./controllers/pokemon.js')
 
 
 
@@ -22,14 +23,10 @@ const options = {
 // MIDDLEWARE //
 app.use(express.urlencoded({extended: false}))
 app.use(cors(options))
+app.use('/', pokemonController)
 
 // ROUTES //
-app.get('/', (req,res) => {
-    // res.send('🌊PokéDex App is live')
-    res.status(200).json({
-        body: "You found the PokéMon!"
-    })
-})
+
 
 // START SERVER
 app.listen(PORT, () => {
