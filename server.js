@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 require('./config')
-const usersRouter = require('./router/users')
+const postRouter = require('./controllers/router/post')
 
 
 
@@ -24,9 +24,8 @@ const options = {
 app.use(express.urlencoded({extended: false}))
 app.use(cors(options))
 app.use(express.json())
-app.use('/', usersRouter)
+app.use('/', postRouter)
 
-// ROUTES //
 
 
 // START SERVER
